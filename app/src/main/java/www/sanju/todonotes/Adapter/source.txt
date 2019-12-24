@@ -1,0 +1,94 @@
+   //init views
+
+        title = findViewById(R.id.titleED)
+        desc = findViewById(R.id.descED)
+        save = findViewById(R.id.saveBtn)
+        delete = findViewById(R.id.deleteBtn)
+        notesTv = findViewById(R.id.notesTV)
+
+        getNotes()
+
+
+        save.setOnClickListener {
+
+//            realm.executeTransactionAsync ({
+//                val notes = it.createObject(Todo::class.java)
+//                notes.title = title.text.toString()
+//                notes.description = desc.text.toString()
+//            },{
+//                Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show()
+//                getNotes()
+//
+//            },{
+//                Toast.makeText(this,"Failure",Toast.LENGTH_SHORT).show()
+//            })
+
+
+            // helper
+
+            try {
+
+
+                helper = TodoModel()
+                val task = Todo()
+                task.title = title.text.toString()
+                task.description = title.text.toString()
+
+                //saving to Database
+                helper.addTodo(realm,task)
+                Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show()
+
+
+                // clear edittext after saving
+                title.setText("")
+                desc.setText("")
+
+                // display notes after saving
+                getNotes()
+
+
+            } catch (e:Exception){
+
+
+                Toast.makeText(this,"Failure",Toast.LENGTH_SHORT).show()
+
+            }
+
+
+        }
+
+
+        delete.setOnClickListener {
+
+//
+//                realm.beginTransaction()
+//                realm.deleteAll()
+//                realm.commitTransaction()
+
+            helper = TodoModel()
+
+            helper.deleteTodo(realm,14)
+
+            Toast.makeText(this,"Deleted",Toast.LENGTH_SHORT).show()
+
+            getNotes()
+
+
+
+        }
+
+
+
+    }
+
+    private fun getNotes() {
+
+        val allnotes = realm.where(Todo::class.java).findAll()
+        var response=""
+        allnotes.forEach {
+            response = response +"  id: ${it.id}, Title: ${it.title}, Description: ${it.description}" +"\n"
+        }
+        notesTv.text = response
+    }
+
+    }

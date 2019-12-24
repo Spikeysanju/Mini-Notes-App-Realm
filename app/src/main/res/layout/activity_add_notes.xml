@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AddNotesActivity">
+
+
+    <EditText
+        android:id="@+id/titleET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:hint="Title"
+        android:text="Avengers"
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:id="@+id/descET"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="One billion box of collection for avengers in 2019!"
+        android:hint="Description"
+        android:padding="10dp"
+        />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/futuraheavy"
+        android:background="@drawable/button_shape"
+        android:layout_margin="20dp"/>
+
+
+
+</LinearLayout>
